@@ -13,12 +13,12 @@ class Courses extends Component {
         ]
     }
 
-    goToCourseHandler(id){
-        console.log(`gotoCourseHandler clicked: ${id}`)
-        this.props.history.push(`/courses/${id}`)
-        // this.props.history.push(`/courses/${id}/${title}`)
+    // goToCourseHandler(id){
+    //     console.log(`gotoCourseHandler clicked: ${id}`)
+    //     this.props.history.push(`/courses/${id}`)
+    //     // this.props.history.push(`/courses/${id}/${title}`)
 
-    }
+    // }
 
     render () {
         return (
@@ -32,22 +32,23 @@ class Courses extends Component {
                                     key={course.id}
                                     // to={`/courses/${course.id}/${course.title}`}
                                     to={{
-                                        pathname: `/courses/${course.id}`,
+                                        pathname: `/courses/course/${course.id}`,
                                         search: `?title=${course.title}`
                                     }}
                                 >
-                                    <article 
+                                    <article className="Course">{course.title}</article>
+                                    {/* <article 
                                         className="Course" 
                                         onClick={() => this.goToCourseHandler(course.id, course.title)}
                                     >
                                         {course.title}
-                                    </article>
+                                    </article> */}
                                 </Link>
                             );
                         } )
                     }
                 </section>
-                <Route path="/courses/:id" exact component= {Course}/>
+                <Route path={`${this.props.match.url}/course/:id`} exact component= {Course}/>
             </div>
         );
     }
